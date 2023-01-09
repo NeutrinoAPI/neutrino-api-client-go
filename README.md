@@ -7,11 +7,11 @@ The official API client and SDK built by [NeutrinoAPI](https://www.neutrinoapi.c
 | Feature          |         |
 |------------------|---------|
 | Platform Version | >= 1.11 |
-| HTTP Library     |         |
-| JSON Library     |         |
-| HTTP/2           | true    |
-| HTTP/3           | false   |
-| CodeGen Version  | 4.6.8   |
+| HTTP Library     | Native  |
+| JSON Library     | Native  |
+| HTTP/2           | Yes     |
+| HTTP/3           | No      |
+| CodeGen Version  | 4.6.10  |
 
 ## Getting started
 

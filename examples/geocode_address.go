@@ -61,7 +61,7 @@ func main() {
 		for _, item := range locations {
 			itemMap := item.(map[string]interface{})
 
-			// The fully formatted address
+			// The complete address using comma-separated values
 			fmt.Printf("    address: \"%s\"\n", itemMap["address"])
 
 			// The components which make up the address such as road, city, state, etc
@@ -106,8 +106,14 @@ func main() {
 			// The location longitude
 			fmt.Printf("    longitude: %.f\n", itemMap["longitude"])
 
+			// The formatted address using local standards suitable for printing on an envelope
+			fmt.Printf("    postal-address: \"%s\"\n", itemMap["postal-address"])
+
 			// The postal code for the location
 			fmt.Printf("    postal-code: \"%s\"\n", itemMap["postal-code"])
+
+			// The ISO 3166-2 region code for the location
+			fmt.Printf("    region-code: \"%s\"\n", itemMap["region-code"])
 
 			// The state of the location
 			fmt.Printf("    state: \"%s\"\n", itemMap["state"])

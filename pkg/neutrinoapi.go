@@ -253,10 +253,12 @@ func (neutrinoAPIClient Client) HTMLRender(params url.Values, file *os.File) *AP
 // ImageResize - Resize an image and output as either JPEG or PNG
 //
 // The parameters this API accepts are:
-// * width - The width to resize to (in px) while preserving aspect ratio
+// * resize-mode - The resize mode to use
+// * width - The width to resize to (in px)
 // * format - The output image format
-// * image-url - The URL or Base64 encoded Data URL for the source image (you can also upload an image file directly in which case this field is ignored)
-// * height - The height to resize to (in px) while preserving aspect ratio
+// * image-url - The URL or Base64 encoded Data URL for the source image
+// * bg-color - The image background color in hexadecimal notation (e.g. #0000ff)
+// * height - The height to resize to (in px)
 //
 // link: https://www.neutrinoapi.com/api/image-resize
 // param: params net/url.Values type, a collection of key/value pairs
@@ -269,13 +271,15 @@ func (neutrinoAPIClient Client) ImageResize(params url.Values, file *os.File) *A
 // ImageWatermark - Watermark one image with another image
 //
 // The parameters this API accepts are:
+// * resize-mode - The resize mode to use
 // * format - The output image format
-// * width - If set resize the resulting image to this width (in px) while preserving aspect ratio
-// * image-url - The URL or Base64 encoded Data URL for the source image (you can also upload an image file directly in which case this field is ignored)
+// * width - If set resize the resulting image to this width (in px)
+// * image-url - The URL or Base64 encoded Data URL for the source image
 // * position - The position of the watermark image
-// * watermark-url - The URL or Base64 encoded Data URL for the watermark image (you can also upload an image file directly in which case this field is ignored)
+// * watermark-url - The URL or Base64 encoded Data URL for the watermark image
 // * opacity - The opacity of the watermark (0 to 100)
-// * height - If set resize the resulting image to this height (in px) while preserving aspect ratio
+// * bg-color - The image background color in hexadecimal notation (e.g. #0000ff)
+// * height - If set resize the resulting image to this height (in px)
 //
 // link: https://www.neutrinoapi.com/api/image-watermark
 // param: params net/url.Values type, a collection of key/value pairs
@@ -302,7 +306,7 @@ func (neutrinoAPIClient Client) IPBlocklist(params url.Values) *APIResponse {
 //
 // The parameters this API accepts are:
 // * format - The data format
-// * include-vpn - Include public VPN provider IP addresses
+// * include-vpn - Include public VPN provider addresses
 // * cidr - Output IPs using CIDR notation
 // * ip6 - Output the IPv6 version of the blocklist
 //
@@ -327,7 +331,7 @@ func (neutrinoAPIClient Client) IPInfo(params url.Values) *APIResponse {
 	return neutrinoAPIClient.ExecRequest("GET", "ip-info", params, nil, 10)
 }
 
-// IPProbe - Analyze and extract provider information for an IP address
+// IPProbe - Execute a realtime network probe against an IPv4 or IPv6 address
 //
 // The parameters this API accepts are:
 // * ip - IPv4 or IPv6 address
@@ -402,22 +406,6 @@ func (neutrinoAPIClient Client) PhoneVerify(params url.Values) *APIResponse {
 // returns *APIResponse
 func (neutrinoAPIClient Client) QRCode(params url.Values, file *os.File) *APIResponse {
 	return neutrinoAPIClient.ExecRequest("POST", "qr-code", params, file, 20)
-}
-
-// SMSMessage - Send a free-form message to any mobile device via SMS
-//
-// The parameters this API accepts are:
-// * number - The phone number to send a message to
-// * country-code - ISO 2-letter country code
-// * limit - Limit the total number of SMS allowed to the supplied phone number
-// * message - The SMS message to send
-// * limit-ttl - Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)
-//
-// link: https://www.neutrinoapi.com/api/sms-message
-// param: params net/url.Values type, a collection of key/value pairs
-// returns *APIResponse
-func (neutrinoAPIClient Client) SMSMessage(params url.Values) *APIResponse {
-	return neutrinoAPIClient.ExecRequest("POST", "sms-message", params, nil, 30)
 }
 
 // SMSVerify - Send a unique security code to any mobile device via SMS

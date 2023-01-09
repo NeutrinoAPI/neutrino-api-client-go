@@ -45,7 +45,8 @@ func main() {
 	// The document title
 	params.Add("title", "")
 
-	// The HTML content. This can be either a URL to load from, a file upload or an HTML content string
+	// The HTML content. This can be either a URL to load from, a file upload (multipart/form-data) or
+	// an HTML content string
 	params.Add("content", "<h1>TEST DOCUMENT</h1><p>Hello, this is a test page...</p>")
 
 	// Set the PDF page width explicitly (in mm)

@@ -35,7 +35,7 @@ func main() {
 		data := response.Data
 		fmt.Println("API Response OK:")
 
-		// The fully formatted address
+		// The complete address using comma-separated values
 		fmt.Printf("address: \"%s\"\n", data["address"])
 
 		// The components which make up the address such as road, city, state, etc
@@ -83,8 +83,14 @@ func main() {
 		// The location longitude
 		fmt.Printf("longitude: %.f\n", data["longitude"])
 
+		// The formatted address using local standards suitable for printing on an envelope
+		fmt.Printf("postal-address: \"%s\"\n", data["postal-address"])
+
 		// The postal code for the location
 		fmt.Printf("postal-code: \"%s\"\n", data["postal-code"])
+
+		// The ISO 3166-2 region code for the location
+		fmt.Printf("region-code: \"%s\"\n", data["region-code"])
 
 		// The state of the location
 		fmt.Printf("state: \"%s\"\n", data["state"])
