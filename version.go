@@ -1,3 +1,3 @@
 package neutrinoapi
 
-const Version = "4.6.10"
+const Version = "4.6.11"

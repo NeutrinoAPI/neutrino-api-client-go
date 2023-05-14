@@ -19,7 +19,7 @@ func main() {
 
 	// Extract content from the page DOM using this selector. Commonly known as a CSS selector, you can
 	// find a good reference here
-	params.Add("selector", ".header-link")
+	params.Add("selector", ".button")
 
 	// The URL to load
 	params.Add("url", "https://www.neutrinoapi.com/")
@@ -36,7 +36,7 @@ func main() {
 	// matching the given selector. keys('characters'); Send the specified keyboard characters. Use
 	// click() or focus() first to send keys to a specific element. enter(); Send the Enter key. tab();
 	// Send the Tab key.
-	params.Add("exec", "[]")
+	params.Add("exec", "[click('#button-id'), sleep(1), click('.class'), keys('1234'), enter()]")
 
 	// Override the browsers default user-agent string with this one
 	params.Add("user-agent", "")

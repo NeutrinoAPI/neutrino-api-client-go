@@ -113,6 +113,19 @@ func (neutrinoAPIClient Client) Convert(params url.Values) *APIResponse {
 	return neutrinoAPIClient.ExecRequest("GET", "convert", params, nil, 10)
 }
 
+// DomainLookup - Retrieve domain name details and detect potentially malicious or dangerous domains
+//
+// The parameters this API accepts are:
+// * host - A domain name
+// * live - For domains that we have never seen before then perform various live checks and realtime reconnaissance
+//
+// link: https://www.neutrinoapi.com/api/domain-lookup
+// param: params net/url.Values type, a collection of key/value pairs
+// returns *APIResponse
+func (neutrinoAPIClient Client) DomainLookup(params url.Values) *APIResponse {
+	return neutrinoAPIClient.ExecRequest("GET", "domain-lookup", params, nil, 120)
+}
+
 // EmailValidate - Parse, validate and clean an email address
 //
 // The parameters this API accepts are:
