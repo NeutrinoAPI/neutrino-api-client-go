@@ -21,7 +21,7 @@ func main() {
 		}
 	}(file)
 
-	params := make(url.Values, 22)
+	params := make(url.Values, 23)
 
 	// The document margin (in mm)
 	params.Add("margin", "0")
@@ -89,6 +89,10 @@ func main() {
 
 	// The document bottom margin (in mm)
 	params.Add("margin-bottom", "0")
+
+	// For image rendering set the background color in hexadecimal notation (e.g. #0000ff). For PNG
+	// output the special value of 'transparent' can be used to create a transparent PNG
+	params.Add("bg-color", "")
 
 	// Set the document to landscape orientation
 	params.Add("landscape", "false")

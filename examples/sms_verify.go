@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	params := make(url.Values, 7)
+	params := make(url.Values, 8)
 
 	// The phone number to send a verification code to
 	params.Add("number", "+12106100045")
@@ -37,6 +37,9 @@ func main() {
 	// Limit the total number of SMS allowed to the supplied phone number, if the limit is reached
 	// within the TTL then error code 14 will be returned
 	params.Add("limit", "10")
+
+	// Set a custom brand or product name in the verification message
+	params.Add("brand-name", "")
 
 	// Set the TTL in number of days that the 'limit' option will remember a phone number (the default
 	// is 1 day and the maximum is 365 days)
