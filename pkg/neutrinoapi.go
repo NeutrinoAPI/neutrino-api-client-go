@@ -59,6 +59,8 @@ func (neutrinoAPIClient Client) BadWordFilter(params url.Values) *APIResponse {
 // The parameters this API accepts are:
 // * include-iso3 - Include ISO 3-letter country codes and ISO 3-letter currency codes in the data
 // * include-8digit - Include 8-digit and higher BIN codes
+// * include-all - Include all BINs and all available fields in the CSV file (overrides any values set for 'include-iso3' or 'include-8digit')
+// * output-encoding - Set this option to 'gzip' to have the output file compressed using gzip
 //
 // link: https://www.neutrinoapi.com/api/bin-list-download
 // param: params net/url.Values type, a collection of key/value pairs
@@ -320,9 +322,11 @@ func (neutrinoAPIClient Client) IPBlocklist(params url.Values) *APIResponse {
 //
 // The parameters this API accepts are:
 // * format - The data format
-// * include-vpn - Include public VPN provider addresses
 // * cidr - Output IPs using CIDR notation
 // * ip6 - Output the IPv6 version of the blocklist
+// * category - The category of IP addresses to include in the download file
+// * output-encoding - Set this option to 'gzip' to have the output file compressed using gzip
+// * checksum - Do not download the file but just return the current files MurmurHash3 checksum
 //
 // link: https://www.neutrinoapi.com/api/ip-blocklist-download
 // param: params net/url.Values type, a collection of key/value pairs

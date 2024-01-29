@@ -25,6 +25,12 @@ func main() {
 		data := response.Data
 		fmt.Println("API Response OK:")
 
+		// The full name of the type being converted from
+		fmt.Printf("from-name: \"%s\"\n", data["from-name"])
+
+		// The standard UTF-8 symbol used to represent the type being converted from
+		fmt.Printf("from-symbol: \"%s\"\n", data["from-symbol"])
+
 		// The type of the value being converted from
 		fmt.Printf("from-type: \"%s\"\n", data["from-type"])
 
@@ -36,6 +42,12 @@ func main() {
 
 		// The result of the conversion as a floating-point number
 		fmt.Printf("result-float: %.f\n", data["result-float"])
+
+		// The full name of the type being converted to
+		fmt.Printf("to-name: \"%s\"\n", data["to-name"])
+
+		// The standard UTF-8 symbol used to represent the type being converted to
+		fmt.Printf("to-symbol: \"%s\"\n", data["to-symbol"])
 
 		// The type being converted to
 		fmt.Printf("to-type: \"%s\"\n", data["to-type"])
