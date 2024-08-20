@@ -11,7 +11,7 @@ import (
 func main() {
 	params := make(url.Values, 1)
 
-	// IPv4 or IPv6 address
+	// An IPv4 or IPv6 address. Accepts standard IP notation and also CIDR notation
 	params.Add("ip", "194.233.98.38")
 
 	neutrinoAPIClient := NewNeutrinoAPIClient("<your-user-id>", "<your-api-key>")
@@ -66,7 +66,7 @@ func main() {
 		// The IPs full hostname (PTR)
 		fmt.Printf("hostname: \"%s\"\n", data["hostname"])
 
-		// The IP address
+		// The IPv4 or IPv6 address returned
 		fmt.Printf("ip: \"%s\"\n", data["ip"])
 
 		// True if this is a bogon IP address such as a private network, local network or reserved address
@@ -80,7 +80,7 @@ func main() {
 		// the provider type is VPN/proxy, this occurs in the case that the IP is detected as both types
 		fmt.Printf("is-isp: %t\n", data["is-isp"])
 
-		// True if this IP ia a proxy
+		// True if this IP is a proxy
 		fmt.Printf("is-proxy: %t\n", data["is-proxy"])
 
 		// True if this is a IPv4 mapped IPv6 address

@@ -21,7 +21,10 @@ func main() {
 		}
 	}(file)
 
-	params := make(url.Values, 5)
+	params := make(url.Values, 6)
+
+	// The barcode format to output. Accepted formats are: qr, c128
+	params.Add("code-format", "qr")
 
 	// The width of the QR code (in px)
 	params.Add("width", "256")

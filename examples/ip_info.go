@@ -10,7 +10,7 @@ import (
 func main() {
 	params := make(url.Values, 2)
 
-	// IPv4 or IPv6 address
+	// An IPv4 or IPv6 address. Accepts standard IP notation and also CIDR notation
 	params.Add("ip", "1.1.1.1")
 
 	// Do a reverse DNS (PTR) lookup. This option can add extra delay to the request so only use it if
@@ -47,7 +47,7 @@ func main() {
 		// The IPs full hostname (only set if reverse-lookup has been used)
 		fmt.Printf("hostname: \"%s\"\n", data["hostname"])
 
-		// An IPv4 or IPv6 address. Accepts standard IP notation and also CIDR notation.
+		// The IPv4 or IPv6 address returned
 		fmt.Printf("ip: \"%s\"\n", data["ip"])
 
 		// True if this is a bogon IP address such as a private network, local network or reserved address
@@ -71,7 +71,7 @@ func main() {
 		// ISO 3166-2 region code (if detectable)
 		fmt.Printf("region-code: \"%s\"\n", data["region-code"])
 
-		// Map containing timezone details
+		// Structure of a valid ip-info -> timezone response
 		fmt.Printf("timezone: %s\n", data["timezone"])
 
 		// True if this is a valid IPv4 or IPv6 address

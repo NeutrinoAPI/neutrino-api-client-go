@@ -55,7 +55,7 @@ func main() {
 		fmt.Printf("http-status: %.f\n", data["http-status"])
 
 		// The HTTP status message assoicated with the status code
-		fmt.Printf("http-status-message: %.f\n", data["http-status-message"])
+		fmt.Printf("http-status-message: \"%s\"\n", data["http-status-message"])
 
 		// True if an error occurred while loading the URL. This includes network errors, TLS errors and
 		// timeouts

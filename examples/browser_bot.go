@@ -50,10 +50,28 @@ func main() {
 		// The complete raw, decompressed and decoded page content. Usually will be either HTML, JSON or XML
 		fmt.Printf("content: \"%s\"\n", data["content"])
 
-		// Array containing all the elements matching the supplied selector. Each element object will
-		// contain the text content, HTML content and all current element attributes
-		elements := strings.Fields(fmt.Sprint(data["elements"]))
-		fmt.Printf("elements: %s\n", strings.Join(elements, ", "))
+		// Array containing all the elements matching the supplied selector
+		fmt.Printf("elements:\n")
+		elements := data["elements"].([]interface{})
+		for _, item := range elements {
+			itemMap := item.(map[string]interface{})
+
+			// The 'class' attribute of the element
+			fmt.Printf("    class: \"%s\"\n", itemMap["class"])
+
+			// The 'href' attribute of the element
+			fmt.Printf("    href: \"%s\"\n", itemMap["href"])
+
+			// The raw HTML of the element
+			fmt.Printf("    html: \"%s\"\n", itemMap["html"])
+
+			// The 'id' attribute of the element
+			fmt.Printf("    id: \"%s\"\n", itemMap["id"])
+
+			// The plain-text content of the element with normalized whitespace
+			fmt.Printf("    text: \"%s\"\n", itemMap["text"])
+		fmt.Println()
+		}
 
 		// Contains the error message if an error has occurred ('is-error' will be true)
 		fmt.Printf("error-message: \"%s\"\n", data["error-message"])

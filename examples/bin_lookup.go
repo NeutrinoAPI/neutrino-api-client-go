@@ -13,7 +13,7 @@ func main() {
 
 	// The BIN or IIN number. This is the first 6, 8 or 10 digits of a card number, use 8 (or more)
 	// digits for the highest level of accuracy
-	params.Add("bin-number", "47192100")
+	params.Add("bin-number", "48334884")
 
 	// Pass in the customers IP address and we will return some extra information about them
 	params.Add("customer-ip", "")
@@ -24,7 +24,8 @@ func main() {
 		data := response.Data
 		fmt.Println("API Response OK:")
 
-		// The BIN or IIN number
+		// The BIN number returned. You may count the number of digits in this field to determine if the BIN
+		// is likely to be based on an 8-digit or 6-digit card
 		fmt.Printf("bin-number: \"%s\"\n", data["bin-number"])
 
 		// The card brand (e.g. Visa or Mastercard)

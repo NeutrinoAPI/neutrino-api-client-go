@@ -16,10 +16,10 @@ import (
 
 // Servers
 const (
-	MulticloudEndpoint = "https://neutrinoapi.net/"
-	AwsEndpoint = "https://aws.neutrinoapi.net/"
-	GcpEndpoint = "https://gcp.neutrinoapi.net/"
-	MsAzureEndpoint = "https://msa.neutrinoapi.net/"
+	Multicloud = "https://neutrinoapi.net/"
+	Aws = "https://aws.neutrinoapi.net/"
+	Gcp = "https://gcp.neutrinoapi.net/"
+	Backup = "https://neutrinoapi.com/"
 	ConnectTimeoutInSeconds = 10
 )
 
@@ -32,7 +32,7 @@ type Client struct {
 
 // NewNeutrinoAPIClient - initializer for NeutrinoAPIClient
 func NewNeutrinoAPIClient(userID string, APIKey string) *Client {
-	return &Client{userID, APIKey, MulticloudEndpoint}
+	return &Client{userID, APIKey, Multicloud}
 }
 
 // NewNeutrinoAPIClientWithBaseURL - initializer for NeutrinoAPIClient
@@ -234,29 +234,31 @@ func (neutrinoAPIClient Client) HTMLClean(params url.Values, file *os.File) *API
 // HTMLRender - Render HTML content to PDF, JPG or PNG
 //
 // The parameters this API accepts are:
-// * margin - The document margin (in mm)
 // * css - Inject custom CSS into the HTML
-// * image-width - If rendering to an image format (PNG or JPG) use this image width (in pixels)
 // * footer - The footer HTML to insert into each page
-// * format - Which format to output
-// * zoom - Set the zoom factor when rendering the page (2.0 for double size
 // * title - The document title
 // * content - The HTML content
 // * page-width - Set the PDF page width explicitly (in mm)
 // * timeout - Timeout in seconds
-// * margin-right - The document right margin (in mm)
 // * grayscale - Render the final document in grayscale
 // * margin-left - The document left margin (in mm)
 // * page-size - Set the document page size
-// * delay - Number of seconds to wait before rendering the page (can be useful for pages with animations etc)
 // * ignore-certificate-errors - Ignore any TLS/SSL certificate errors
 // * page-height - Set the PDF page height explicitly (in mm)
+// * margin-top - The document top margin (in mm)
+// * bg-color - For image rendering set the background color in hexadecimal notation (e.g. #0000ff)
+// * margin - The document margin (in mm)
+// * image-width - If rendering to an image format (PNG or JPG) use this image width (in pixels)
+// * format - Which format to output
+// * zoom - Set the zoom factor when rendering the page (2.0 for double size
+// * margin-right - The document right margin (in mm)
+// * delay - Number of seconds to wait before rendering the page (can be useful for pages with animations etc)
 // * image-height - If rendering to an image format (PNG or JPG) use this image height (in pixels)
 // * header - The header HTML to insert into each page
-// * margin-top - The document top margin (in mm)
 // * margin-bottom - The document bottom margin (in mm)
-// * bg-color - For image rendering set the background color in hexadecimal notation (e.g. #0000ff)
 // * landscape - Set the document to landscape orientation
+// * exec - Execute JavaScript on the website
+// * user-agent - Override the browsers default user-agent string with this one
 //
 // link: https://www.neutrinoapi.com/api/html-render
 // param: params net/url.Values type, a collection of key/value pairs
@@ -339,7 +341,7 @@ func (neutrinoAPIClient Client) IPBlocklistDownload(params url.Values, file *os.
 // IPInfo - Get location information about an IP address and do reverse DNS (PTR) lookups
 //
 // The parameters this API accepts are:
-// * ip - IPv4 or IPv6 address
+// * ip - An IPv4 or IPv6 address
 // * reverse-lookup - Do a reverse DNS (PTR) lookup
 //
 // link: https://www.neutrinoapi.com/api/ip-info
@@ -352,7 +354,7 @@ func (neutrinoAPIClient Client) IPInfo(params url.Values) *APIResponse {
 // IPProbe - Execute a realtime network probe against an IPv4 or IPv6 address
 //
 // The parameters this API accepts are:
-// * ip - IPv4 or IPv6 address
+// * ip - An IPv4 or IPv6 address
 //
 // link: https://www.neutrinoapi.com/api/ip-probe
 // param: params net/url.Values type, a collection of key/value pairs
@@ -412,6 +414,7 @@ func (neutrinoAPIClient Client) PhoneVerify(params url.Values) *APIResponse {
 // QRCode - Generate a QR code as a PNG image
 //
 // The parameters this API accepts are:
+// * code-format - The barcode format to output
 // * width - The width of the QR code (in px)
 // * fg-color - The QR code foreground color
 // * bg-color - The QR code background color
