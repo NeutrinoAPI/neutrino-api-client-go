@@ -118,7 +118,7 @@ func main() {
 			// The state of the location
 			fmt.Printf("    state: \"%s\"\n", itemMap["state"])
 
-			// Structure of a valid ip-info -> timezone response
+			// Structure of a ip-info -> timezone response
 			fmt.Printf("    timezone: %s\n", itemMap["timezone"])
 		fmt.Println()
 		}

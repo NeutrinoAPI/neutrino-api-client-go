@@ -5,7 +5,6 @@ import (
 	"net/url"
 	. "neutrino_api_client_go/pkg"
 	"os"
-	"strings"
 )
 
 func main() {
@@ -50,6 +49,9 @@ func main() {
 		// The complete raw, decompressed and decoded page content. Usually will be either HTML, JSON or XML
 		fmt.Printf("content: \"%s\"\n", data["content"])
 
+		// The size of the returned content in bytes
+		fmt.Printf("content-size: %.f\n", data["content-size"])
+
 		// Array containing all the elements matching the supplied selector
 		fmt.Printf("elements:\n")
 		elements := data["elements"].([]interface{})
@@ -77,8 +79,18 @@ func main() {
 		fmt.Printf("error-message: \"%s\"\n", data["error-message"])
 
 		// If you executed any JavaScript this array holds the results as objects
-		execResults := strings.Fields(fmt.Sprint(data["exec-results"]))
-		fmt.Printf("exec-results: %s\n", strings.Join(execResults, ", "))
+		fmt.Printf("exec-results:\n")
+		execResults := data["exec-results"].([]interface{})
+		for _, item := range execResults {
+			itemMap := item.(map[string]interface{})
+
+			// The result of the executed JavaScript statement. Will be empty if the statement returned nothing
+			fmt.Printf("    result: \"%s\"\n", itemMap["result"])
+
+			// The JavaScript statement that was executed
+			fmt.Printf("    statement: \"%s\"\n", itemMap["statement"])
+		fmt.Println()
+		}
 
 		// The redirected URL if the URL responded with an HTTP redirect
 		fmt.Printf("http-redirect-url: \"%s\"\n", data["http-redirect-url"])
@@ -121,14 +133,24 @@ func main() {
 		// Map containing details of the TLS/SSL setup
 		fmt.Printf("security-details: %s\n", data["security-details"])
 
+		// The HTTP servers hostname (PTR/RDNS record)
+		fmt.Printf("server-hostname: \"%s\"\n", data["server-hostname"])
+
 		// The HTTP servers IP address
 		fmt.Printf("server-ip: \"%s\"\n", data["server-ip"])
 
 		// The document title
 		fmt.Printf("title: \"%s\"\n", data["title"])
 
-		// The page URL
+		// The requested URL. This may not be the same as the final destination URL, if the URL redirects
+		// then it will be set in 'http-redirect-url' and 'is-http-redirect' will also be true
 		fmt.Printf("url: \"%s\"\n", data["url"])
+
+		// Structure of a browser-bot -> url-components response
+		fmt.Printf("url-components: %s\n", data["url-components"])
+
+		// True if the URL supplied is valid
+		fmt.Printf("url-valid: %t\n", data["url-valid"])
 
 	} else {
 		// You should handle this gracefully!

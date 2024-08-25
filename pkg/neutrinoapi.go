@@ -16,10 +16,10 @@ import (
 
 // Servers
 const (
-	Multicloud = "https://neutrinoapi.net/"
-	Aws = "https://aws.neutrinoapi.net/"
-	Gcp = "https://gcp.neutrinoapi.net/"
-	Backup = "https://neutrinoapi.com/"
+	MulticloudEndpoint = "https://neutrinoapi.net/"
+	AwsEndpoint = "https://aws.neutrinoapi.net/"
+	GcpEndpoint = "https://gcp.neutrinoapi.net/"
+	BackupEndpoint = "https://neutrinoapi.com/"
 	ConnectTimeoutInSeconds = 10
 )
 
@@ -32,7 +32,7 @@ type Client struct {
 
 // NewNeutrinoAPIClient - initializer for NeutrinoAPIClient
 func NewNeutrinoAPIClient(userID string, APIKey string) *Client {
-	return &Client{userID, APIKey, Multicloud}
+	return &Client{userID, APIKey, MulticloudEndpoint}
 }
 
 // NewNeutrinoAPIClientWithBaseURL - initializer for NeutrinoAPIClient

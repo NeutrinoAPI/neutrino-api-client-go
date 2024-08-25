@@ -71,7 +71,7 @@ func main() {
 		// ISO 3166-2 region code (if detectable)
 		fmt.Printf("region-code: \"%s\"\n", data["region-code"])
 
-		// Structure of a valid ip-info -> timezone response
+		// Structure of a ip-info -> timezone response
 		fmt.Printf("timezone: %s\n", data["timezone"])
 
 		// True if this is a valid IPv4 or IPv6 address
