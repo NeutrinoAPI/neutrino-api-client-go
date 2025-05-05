@@ -82,6 +82,9 @@ func main() {
 			// ISO 4217 currency code associated with the country
 			fmt.Printf("    currency-code: \"%s\"\n", itemMap["currency-code"])
 
+			// The ISO 2-letter language code for the official language spoken in the country
+			fmt.Printf("    language-code: \"%s\"\n", itemMap["language-code"])
+
 			// The location latitude
 			fmt.Printf("    latitude: %.f\n", itemMap["latitude"])
 
@@ -118,7 +121,7 @@ func main() {
 			// The state of the location
 			fmt.Printf("    state: \"%s\"\n", itemMap["state"])
 
-			// Structure of a ip-info -> timezone response
+			// Structure of timezone
 			fmt.Printf("    timezone: %s\n", itemMap["timezone"])
 		fmt.Println()
 		}

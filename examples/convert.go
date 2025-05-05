@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	params := make(url.Values, 3)
+	params := make(url.Values, 4)
 
 	// The value to convert from (e.g. 10.95)
 	params.Add("from-value", "100")
@@ -18,6 +18,12 @@ func main() {
 
 	// The type to convert to (e.g. EUR)
 	params.Add("to-type", "EUR")
+
+	// Convert using the rate on a historical date, accepted date formats are: YYYY-MM-DD, YYYY-MM,
+	// YYYY. Historical rates are stored with daily granularity so the date format YYYY-MM-DD is
+	// preferred for the highest precision. If an invalid date or a date too far into the past is
+	// supplied then the API will respond with 'valid' as false and an empty 'historical-date'
+	params.Add("historical-date", "")
 
 	neutrinoAPIClient := NewNeutrinoAPIClient("<your-user-id>", "<your-api-key>")
 	response := neutrinoAPIClient.Convert(params)
@@ -36,6 +42,10 @@ func main() {
 
 		// The value being converted from
 		fmt.Printf("from-value: \"%s\"\n", data["from-value"])
+
+		// If a historical conversion was made using the 'historical-date' request option this will contain
+		// the exact date used for the conversion in ISO format: YYYY-MM-DD
+		fmt.Printf("historical-date: \"%s\"\n", data["historical-date"])
 
 		// The result of the conversion in string format
 		fmt.Printf("result: \"%s\"\n", data["result"])

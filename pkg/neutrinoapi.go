@@ -20,6 +20,9 @@ const (
 	AwsEndpoint = "https://aws.neutrinoapi.net/"
 	GcpEndpoint = "https://gcp.neutrinoapi.net/"
 	BackupEndpoint = "https://neutrinoapi.com/"
+	EuGeofenceEndpoint = "https://eu.neutrinoapi.net/"
+	AuGeofenceEndpoint = "https://aus.neutrinoapi.net/"
+	UsGeofenceEndpoint = "https://usa.neutrinoapi.net/"
 	ConnectTimeoutInSeconds = 10
 )
 
@@ -107,6 +110,7 @@ func (neutrinoAPIClient Client) BrowserBot(params url.Values) *APIResponse {
 // * from-value - The value to convert from (e.g. 10.95)
 // * from-type - The type of the value to convert from (e.g. USD)
 // * to-type - The type to convert to (e.g. EUR)
+// * historical-date - Convert using the rate on a historical date
 //
 // link: https://www.neutrinoapi.com/api/convert
 // param: params net/url.Values type, a collection of key/value pairs
@@ -125,7 +129,7 @@ func (neutrinoAPIClient Client) Convert(params url.Values) *APIResponse {
 // param: params net/url.Values type, a collection of key/value pairs
 // returns *APIResponse
 func (neutrinoAPIClient Client) DomainLookup(params url.Values) *APIResponse {
-	return neutrinoAPIClient.ExecRequest("GET", "domain-lookup", params, nil, 120)
+	return neutrinoAPIClient.ExecRequest("GET", "domain-lookup", params, nil, 300)
 }
 
 // EmailValidate - Parse, validate and clean an email address
@@ -151,7 +155,7 @@ func (neutrinoAPIClient Client) EmailValidate(params url.Values) *APIResponse {
 // param: params net/url.Values type, a collection of key/value pairs
 // returns *APIResponse
 func (neutrinoAPIClient Client) EmailVerify(params url.Values) *APIResponse {
-	return neutrinoAPIClient.ExecRequest("GET", "email-verify", params, nil, 120)
+	return neutrinoAPIClient.ExecRequest("GET", "email-verify", params, nil, 300)
 }
 
 // GeocodeAddress - Geocode an address, partial address or just the name of a place
@@ -214,7 +218,7 @@ func (neutrinoAPIClient Client) HLRLookup(params url.Values) *APIResponse {
 // param: params net/url.Values type, a collection of key/value pairs
 // returns *APIResponse
 func (neutrinoAPIClient Client) HostReputation(params url.Values) *APIResponse {
-	return neutrinoAPIClient.ExecRequest("GET", "host-reputation", params, nil, 120)
+	return neutrinoAPIClient.ExecRequest("GET", "host-reputation", params, nil, 300)
 }
 
 // HTMLClean - Clean and sanitize untrusted HTML
@@ -283,7 +287,7 @@ func (neutrinoAPIClient Client) HTMLRender(params url.Values, file *os.File) *AP
 // param: file *os.File, where to save the response
 // returns *APIResponse
 func (neutrinoAPIClient Client) ImageResize(params url.Values, file *os.File) *APIResponse {
-	return neutrinoAPIClient.ExecRequest("POST", "image-resize", params, file, 20)
+	return neutrinoAPIClient.ExecRequest("POST", "image-resize", params, file, 30)
 }
 
 // ImageWatermark - Watermark one image with another image
@@ -304,7 +308,7 @@ func (neutrinoAPIClient Client) ImageResize(params url.Values, file *os.File) *A
 // param: file *os.File, where to save the response
 // returns *APIResponse
 func (neutrinoAPIClient Client) ImageWatermark(params url.Values, file *os.File) *APIResponse {
-	return neutrinoAPIClient.ExecRequest("POST", "image-watermark", params, file, 20)
+	return neutrinoAPIClient.ExecRequest("POST", "image-watermark", params, file, 30)
 }
 
 // IPBlocklist - The IP Blocklist API will detect potentially malicious or dangerous IP addresses
@@ -360,7 +364,7 @@ func (neutrinoAPIClient Client) IPInfo(params url.Values) *APIResponse {
 // param: params net/url.Values type, a collection of key/value pairs
 // returns *APIResponse
 func (neutrinoAPIClient Client) IPProbe(params url.Values) *APIResponse {
-	return neutrinoAPIClient.ExecRequest("GET", "ip-probe", params, nil, 120)
+	return neutrinoAPIClient.ExecRequest("GET", "ip-probe", params, nil, 300)
 }
 
 // PhonePlayback - Make an automated call to any valid phone number and playback an audio message
@@ -426,7 +430,7 @@ func (neutrinoAPIClient Client) PhoneVerify(params url.Values) *APIResponse {
 // param: file *os.File, where to save the response
 // returns *APIResponse
 func (neutrinoAPIClient Client) QRCode(params url.Values, file *os.File) *APIResponse {
-	return neutrinoAPIClient.ExecRequest("POST", "qr-code", params, file, 20)
+	return neutrinoAPIClient.ExecRequest("POST", "qr-code", params, file, 30)
 }
 
 // SMSVerify - Send a unique security code to any mobile device via SMS

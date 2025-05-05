@@ -90,6 +90,10 @@ func main() {
 		// The mobile MSIN number (Mobile Subscription Identification Number)
 		fmt.Printf("msin: \"%s\"\n", data["msin"])
 
+		// Contains any additional details about the current network such as former network names and mobile
+		// technology utilized
+		fmt.Printf("network-tags: \"%s\"\n", data["network-tags"])
+
 		// The number type, possible values are:
 		// • mobile
 		// • fixed-line

@@ -59,6 +59,9 @@ func main() {
 		// True if these coordinates map to a real location
 		fmt.Printf("found: %t\n", data["found"])
 
+		// The ISO 2-letter language code for the official language spoken in the country
+		fmt.Printf("language-code: \"%s\"\n", data["language-code"])
+
 		// The location latitude
 		fmt.Printf("latitude: %.f\n", data["latitude"])
 
@@ -95,7 +98,7 @@ func main() {
 		// The state of the location
 		fmt.Printf("state: \"%s\"\n", data["state"])
 
-		// Structure of a ip-info -> timezone response
+		// Structure of timezone
 		fmt.Printf("timezone: %s\n", data["timezone"])
 
 	} else {

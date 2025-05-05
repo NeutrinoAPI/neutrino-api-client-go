@@ -26,6 +26,9 @@ const (
 	NoBatchMode = 22
 	BatchLimitExceeded = 23
 	BatchInvalid = 24
+	DatasetUnknown = 26
+	DatasetGenerationFailed = 27
+	DatasetInvalidDate = 28
 	UserDefinedDailyLimit = 31
 	AccessForbidden = 43
 	RequestTooLarge = 44
@@ -94,6 +97,12 @@ func GetErrorMessage(code int) string {
 		return "BATCH PROCESSING REQUEST LIMIT EXCEEDED"
 	case BatchInvalid:
 		return "INVALID BATCH REQUEST. DOES NOT CONFORM TO SPEC"
+	case DatasetUnknown:
+		return "UNKNOWN DATASET ID OR INVALID DATASET OPTION SUPPLIED"
+	case DatasetGenerationFailed:
+		return "FAILED TO GENERATE DATASET OUTPUT FILE"
+	case DatasetInvalidDate:
+		return "INVALID DATE SUPPLIED OR DATE IS BEFORE FIRST HISTORICAL RECORD"
 	case UserDefinedDailyLimit:
 		return "DAILY API LIMIT EXCEEDED. SET BY ACCOUNT HOLDER"
 	case AccessForbidden:

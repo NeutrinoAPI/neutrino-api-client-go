@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	file, err := ioutil.TempFile("", "bin-list-download-*.png")
+	file, err := ioutil.TempFile("", "bin-list-download-*.csv")
 	if err != nil {
 		_, _ = fmt.Fprintln(os.Stderr, err)
         return

@@ -32,7 +32,15 @@ func main() {
 		fmt.Printf("age: %.f\n", data["age"])
 
 		// An array of strings indicating which blocklist categories this domain is listed on. Current
-		// categories are: phishing, malware, spam, anonymizer, nefarious
+		// possible values are:
+		// • phishing - Domain has recently been hosting phishing links or involved in the sending of
+		//   phishing messages
+		// • malware - Domain has recently been hosting malware or involved in the distribution of malware
+		// • spam - Domain has recently been sending spam either directly or indirectly
+		// • anonymizer - Domain is involved in anonymizer activity such as disposable email, hosting
+		//   proxies or tor services
+		// • nefarious - Domain is involved in nefarious or malicious activity such as hacking, fraud or
+		//   other abusive behavior
 		blocklists := strings.Fields(fmt.Sprint(data["blocklists"]))
 		fmt.Printf("blocklists: %s\n", strings.Join(blocklists, ", "))
 

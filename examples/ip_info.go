@@ -59,6 +59,9 @@ func main() {
 		// True if this is a IPv6 address. False if IPv4
 		fmt.Printf("is-v6: %t\n", data["is-v6"])
 
+		// The ISO 2-letter language code for the official language spoken in the country
+		fmt.Printf("language-code: \"%s\"\n", data["language-code"])
+
 		// Location latitude
 		fmt.Printf("latitude: %.f\n", data["latitude"])
 
@@ -71,7 +74,7 @@ func main() {
 		// ISO 3166-2 region code (if detectable)
 		fmt.Printf("region-code: \"%s\"\n", data["region-code"])
 
-		// Structure of a ip-info -> timezone response
+		// Structure of timezone
 		fmt.Printf("timezone: %s\n", data["timezone"])
 
 		// True if this is a valid IPv4 or IPv6 address

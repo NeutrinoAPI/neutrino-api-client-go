@@ -146,7 +146,7 @@ func main() {
 		// then it will be set in 'http-redirect-url' and 'is-http-redirect' will also be true
 		fmt.Printf("url: \"%s\"\n", data["url"])
 
-		// Structure of a browser-bot -> url-components response
+		// Structure of url-components
 		fmt.Printf("url-components: %s\n", data["url-components"])
 
 		// True if the URL supplied is valid
